@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--the activity of home's id-->
+    <item name="view_pager_home" type="id"/>
+    <item name="tab_bottom_home" type="id"/>
+
+    <!--the fragment of home's id-->
+    <item name="recycler_view_home_fm" type="id"/>
+    <item name="tv_msg_home_fm_top" type="id"/>
+    <item name="et_search_home_fm_top" type="id"/>
+
+    <!--HomeFragment's RecyclerView banner id-->
+    <item name="banner" type="id"/>
+    <!--HomeFragment's RecyclerView type id-->
+    <item name="grid_view_type" type="id"/>
+    <!--HomeFragment's RecyclerView type GridView id-->
+    <item name="iv_icon" type="id"/>
+    <item name="tv_name" type="id"/>
+    <!--HomeFragment's RecyclerView recommend GridView id-->
+    <item name="grid_view_recommend" type="id"/>
+    <item name="tv_more_recommend" type="id"/>
+    <!--HomeFragment's RecyclerView hot GridView id-->
+    <item name="grid_view_hot" type="id"/>
+    <item name="tv_more_hot" type="id"/>
+
+    <!--the fragment of the course-->
+    <item name="btn_login" type="id"/>
+    <item name="btn_regist" type="id"/>
+</resources>

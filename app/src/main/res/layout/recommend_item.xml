@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:drawablePadding="8dp"
+                android:drawableLeft="@drawable/home_arrow_left_flash"
+                android:gravity="center_vertical"
+                android:padding="8dp"
+                android:text="推荐"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"/>
+        <TextView
+                android:drawablePadding="8dp"
+                android:id="@id/tv_more_recommend"
+                android:drawableRight="@drawable/home_arrow_right"
+                android:layout_alignParentRight="true"
+                android:gravity="center_vertical"
+                android:padding="8dp"
+                android:text="查看更多"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"/>
+    </RelativeLayout>
+
+
+    <com.jskj.course.ui.NoScrollGridView
+            android:id="@id/grid_view_recommend"
+            android:numColumns="2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></com.jskj.course.ui.NoScrollGridView>
+</LinearLayout>
