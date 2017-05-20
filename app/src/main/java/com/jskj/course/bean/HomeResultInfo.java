@@ -2,9 +2,6 @@ package com.jskj.course.bean;
 
 import java.util.List;
 
-/**
- * Created by xuecheng.cui on 2017/2/3.
- */
 public class HomeResultInfo {
     public String code;
     public String msg;

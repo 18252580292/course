@@ -27,9 +27,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-/**
- * Created by xuecheng.cui on 2017/2/3.
- */
+
 public class HomeFragment extends Fragment {
     private RecyclerView mRecycleView;
     private TextView mTvMsg;

@@ -13,9 +13,6 @@ import com.jskj.course.constant.HttpConstants;
 
 import java.util.List;
 
-/**
- * Created by xuecheng.cui on 2017/2/3.
- */
 public class HomeRecyclerTypeAapter extends BaseAdapter {
     private List<HomeResultInfo.Result.ChannelInfo> channelInfos;
 

@@ -6,9 +6,6 @@ import android.widget.BaseAdapter;
 
 import java.util.List;
 
-/**
- * Created by xuecheng.cui on 2017/2/4.
- */
 public abstract class HomeRecyclerBaseAdapter<T> extends BaseAdapter {
     protected List<T> list;
 

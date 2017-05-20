@@ -12,9 +12,6 @@ import com.jskj.course.constant.HttpConstants;
 
 import java.util.List;
 
-/**
- * Created by xuecheng.cui on 2017/2/4.
- */
 public class HomeRecyclerRecommendAdapter extends HomeRecyclerBaseAdapter<HomeResultInfo.Result.RecommendInfo> {
     private View view;
 

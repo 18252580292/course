@@ -9,9 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-/**
- * Created by xuecheng.cui on 2017/2/3.
- */
 public class UserFragment extends Fragment{
     @Nullable
     @Override

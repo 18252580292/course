@@ -19,9 +19,6 @@ import com.youth.banner.listener.OnLoadImageListener;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by xuecheng.cui on 2017/2/3.
- */
 public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final int BANNER_INFO = 0;
     private final int TYPE_INFO = 1;

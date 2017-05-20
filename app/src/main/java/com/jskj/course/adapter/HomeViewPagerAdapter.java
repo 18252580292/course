@@ -6,9 +6,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.jskj.course.fragment.FragmentFactory;
 
-/**
- * Created by xuecheng.cui on 2017/2/3.
- */
 public class HomeViewPagerAdapter extends FragmentPagerAdapter {
     private String[] names;
 

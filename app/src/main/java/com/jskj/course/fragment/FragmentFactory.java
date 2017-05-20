@@ -3,9 +3,7 @@ package com.jskj.course.fragment;
 import android.support.v4.app.Fragment;
 import android.util.SparseArray;
 
-/**
- * Created by xuecheng.cui on 2017/2/3.
- */
+
 public class FragmentFactory {
     private static SparseArray<Fragment> mFms = new SparseArray<>();
 

@@ -4,9 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.GridView;
 
-/**
- * Created by xuecheng.cui on 2017/2/4.
- */
 public class NoScrollGridView extends GridView {
     public NoScrollGridView(Context context) {
         super(context);
