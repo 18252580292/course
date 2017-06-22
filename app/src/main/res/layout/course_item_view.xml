@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/course_ll"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+
+    <TextView
+        android:id="@+id/course_tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="8dp" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="16dp">
+
+
+        <ImageView
+            android:id="@+id/course_img"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:scaleType="fitXY" />
+
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>
