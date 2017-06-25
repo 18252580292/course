@@ -12,9 +12,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-/**
- * Created by cui on 2017/6/18.
- */
 
 public class OkhttpUtils {
 
@@ -36,6 +33,21 @@ public class OkhttpUtils {
             }
         });
     }
+
+
+    public static String get(String url) throws IOException {
+        client = new OkHttpClient();
+        Request request = new Request.Builder().url(url).build();
+        Call call = client.newCall(request);
+        Response execute = call.execute();
+        String result = execute.body().string();
+        if(execute == null || execute.body() == null || result == null) {
+            return null;
+        }
+
+        return result;
+    }
+
 
     /**
      * post 请求
@@ -63,4 +75,6 @@ public class OkhttpUtils {
             }
         });
     }
+
+
 }

@@ -26,7 +26,6 @@ import static com.jskj.course.constant.MsgConstant.MSG_SUCCESS;
 
 
 public class HomeFragment extends BaseFragment {
-
     private RecyclerView mRecyclerView;
     private Handler mHandler = new Handler() {
         @Override

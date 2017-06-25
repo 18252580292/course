@@ -2,18 +2,21 @@ package com.jskj.course.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.jskj.course.R;
 import com.jskj.course.bean.HomeBean;
 import com.jskj.course.constant.HttpConstants;
 import com.jskj.course.ui.PlayActivity;
+import com.jskj.course.ui.TypeActivity;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnLoadImageListener;
 
@@ -28,10 +31,12 @@ public class HomeAdapter extends RecyclerView.Adapter {
     private static final int VIEW_RECOMMEND = 0x03;
     private Context mContext;
     private HomeBean homeBean;
+    private SharedPreferences mPref;
 
     public HomeAdapter(Context context, HomeBean homeBean) {
         this.mContext = context;
         this.homeBean = homeBean;
+        mPref = this.mContext.getSharedPreferences("config", Context.MODE_PRIVATE);
     }
 
     @Override
@@ -72,6 +77,31 @@ public class HomeAdapter extends RecyclerView.Adapter {
             case 1:
                 ChannelHolder viewHolder = (ChannelHolder) holder;
                 viewHolder.gridView.setAdapter(new ChannelAdapter(homeBean));
+                viewHolder.gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        if (i == 4) {
+                            Toast.makeText(mContext, "没有更多了！！！", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        Intent intent = new Intent(mContext, TypeActivity.class);
+                        switch (i) {
+                            case 0:
+                                intent.putExtra("key", "math");
+                                break;
+                            case 1:
+                                intent.putExtra("key", "lang");
+                                break;
+                            case 2:
+                                intent.putExtra("key", "major");
+                                break;
+                            case 3:
+                                intent.putExtra("key", "img");
+                                break;
+                        }
+                        mContext.startActivity(intent);
+                    }
+                });
                 break;
             case 2:
                 HotHolder hotHolder = (HotHolder) holder;
@@ -79,12 +109,19 @@ public class HomeAdapter extends RecyclerView.Adapter {
                 hotHolder.mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        String url = HttpConstants.BASE_URL + homeBean.getResult().getHot_info().get(position).getUrl();
+                        String name = homeBean.getResult().getHot_info().get(position).getName();
                         Intent intent = new Intent(mContext, PlayActivity.class);
                         Bundle bundle = new Bundle();
-                        bundle.putString("url", HttpConstants.BASE_URL + homeBean.getResult().getHot_info().get(position).getUrl());
-                        bundle.putString("name", homeBean.getResult().getHot_info().get(position).getName());
+                        bundle.putString("url", url);
+                        bundle.putString("name", name);
                         intent.putExtra("bundle", bundle);
                         mContext.startActivity(intent);
+                        SharedPreferences.Editor editor = mPref.edit();
+                        editor.putString("url", url);
+                        editor.putString("name", name);
+                        editor.putString("img", homeBean.getResult().getHot_info().get(position).getFigure());
+                        editor.apply();
                     }
                 });
                 break;
@@ -94,12 +131,19 @@ public class HomeAdapter extends RecyclerView.Adapter {
                 recommendHolder.mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        String url = HttpConstants.BASE_URL + homeBean.getResult().getRecommend_info().get(position).getUrl();
+                        String name = homeBean.getResult().getRecommend_info().get(position).getName();
                         Intent intent = new Intent(mContext, PlayActivity.class);
                         Bundle bundle = new Bundle();
-                        bundle.putString("url", HttpConstants.BASE_URL + homeBean.getResult().getRecommend_info().get(position).getUrl());
-                        bundle.putString("name", homeBean.getResult().getRecommend_info().get(position).getName());
+                        SharedPreferences.Editor editor = mPref.edit();
+                        bundle.putString("url", url);
+                        bundle.putString("name", name);
                         intent.putExtra("bundle", bundle);
                         mContext.startActivity(intent);
+                        editor.putString("url", url);
+                        editor.putString("name", name);
+                        editor.putString("img", homeBean.getResult().getRecommend_info().get(position).getFigure());
+                        editor.apply();
                     }
                 });
                 break;

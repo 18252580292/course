@@ -24,9 +24,9 @@ public class FragmentFactory {
             case R.id.home_rb:
                 fragment = new HomeFragment();
                 break;
-            case R.id.type_rb:
-                fragment = new TypeFragment();
-                break;
+//            case R.id.type_rb:
+//                fragment = new TypeFragment();
+//                break;
             case R.id.course_rb:
                 fragment = new CourseFragment();
                 break;
