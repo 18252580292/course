@@ -25,7 +25,8 @@
             android:name=".ui.PlayActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="sensorLandscape" />
-        <activity android:name=".ui.LoginActivity"/>
+        <activity android:name=".ui.LoginActivity" />
+        <activity android:name=".ui.TypeActivity"></activity>
     </application>
 
 </manifest>

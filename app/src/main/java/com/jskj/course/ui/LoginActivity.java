@@ -1,6 +1,7 @@
 package com.jskj.course.ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -8,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -34,11 +36,16 @@ import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = LoginActivity.class.getSimpleName();
     private ImageButton mBackBtn;
     private Button mRegisterBtn;
+    private Button mBtnLogin;
     private TextInputEditText usernameEt;
     private TextInputEditText pwdEt;
     private TextInputEditText pwdTwoEt;
+    private TextInputEditText inputUsername;
+    private TextInputEditText inputPwd;
+
     private Button btnSubmit;
     private Button btnCancel;
     private AlertDialog dialog;
@@ -58,11 +65,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void initView() {
         mBackBtn = (ImageButton) findViewById(R.id.back_img_btn);
         mRegisterBtn = (Button) findViewById(R.id.register_btn);
+        mBtnLogin = (Button) findViewById(R.id.btn_login);
+        inputUsername = (TextInputEditText) findViewById(R.id.input_user_et);
+        inputPwd = (TextInputEditText) findViewById(R.id.input_pwd_et);
     }
 
     private void initEvent() {
         mBackBtn.setOnClickListener(this);
         mRegisterBtn.setOnClickListener(this);
+        mBtnLogin.setOnClickListener(this);
     }
 
     @Override
@@ -74,12 +85,62 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.register_btn:
                 showRegisterDialog();
                 break;
+            case R.id.btn_login:
+                new Thread() {
+                    @Override
+                    public void run() {
+                        login();
+                    }
+                }.start();
+                break;
             case R.id.btn_submit:
                 register();
                 break;
             case R.id.btn_cancel:
                 dialog.dismiss();
                 break;
+        }
+    }
+
+    private void login() {
+        String username = inputUsername.getText().toString();
+        String password = inputPwd.getText().toString();
+        if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+
+                    ToastUtils.showToast(LoginActivity.this, "用户名或者密码不能为空!!!");
+                }
+            });
+            return;
+        }
+        try {
+            String json = OkhttpUtils.get(HttpConstants.LOGIN_URL + "?username=" + username + "&password=" + password);
+            Log.e(TAG, "login: " + json);
+            final JSONObject obj = new JSONObject(json);
+            if (obj.getInt("code") == 200) {
+                //login success
+                Intent intent = new Intent();
+                intent.putExtra("username", username);
+                setResult(300, intent);
+                finish();
+            } else {
+                //login failed
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            ToastUtils.showToast(LoginActivity.this, obj.getString("msg"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

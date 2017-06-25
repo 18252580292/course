@@ -66,5 +66,6 @@ public class PlayActivity extends AppCompatActivity implements PlayerManager.Pla
         if(player != null) {
             player.stop();
         }
+        finish();
     }
 }

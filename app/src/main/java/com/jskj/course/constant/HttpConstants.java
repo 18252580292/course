@@ -6,5 +6,6 @@ public class HttpConstants {
     public static final String COURSE_URL = BASE_URL + "/json/all_course.json";
     public static final String BASE_IMG_URL = BASE_URL + "/img/";
     public static final String REGISTER_URL = BASE_URL + "/regist";
+    public static final String LOGIN_URL = BASE_URL + "/login";
 
 }

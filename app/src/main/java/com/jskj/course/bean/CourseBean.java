@@ -17,6 +17,15 @@ public class CourseBean {
     private int code;
     private String msg;
     private List<Course> course;
+    private String content;
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     public int getCode() {
         return code;
