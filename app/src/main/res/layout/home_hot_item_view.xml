@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/hot_ll"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:paddingLeft="8dp"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:drawableLeft="@drawable/home_hot"
+        android:gravity="center_vertical"
+        android:text="热门" />
+
+    <com.jskj.course.widget.NoScrollView
+        android:id="@+id/hot_grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="2" />
+</LinearLayout>
